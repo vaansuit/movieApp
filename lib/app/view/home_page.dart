@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/app/controller/getMoviesController.dart';
+
+import '../model/movie_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,13 +12,41 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  GetMoviesController getMoviesController = GetMoviesController();
+  late Future<List<MovieModel>> movies;
+
+  @override
+  void initState() {
+    movies = getMoviesController.fetchMovies();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(''),
+        title: const Text('The House of Horror'),
       ),
-      body: Container(),
+      body: Center(
+        child: FutureBuilder(
+          future: movies,
+          builder: (context, AsyncSnapshot<List<MovieModel>> snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  MovieModel movie = snapshot.data![index];
+                  return ListTile(
+                    title: Text(movie.title),
+                    subtitle: Text(movie.posterPath),
+                  );
+                },
+              );
+            }
+            return const CircularProgressIndicator();
+          },
+        ),
+      ),
     );
   }
 }
