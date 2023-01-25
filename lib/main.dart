@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/app/view/login/login_page.dart';
+import 'package:movie_app/app/view/signup/signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const SignupPage(),
     );
   }
 }
