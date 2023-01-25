@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/app/controller/getMoviesController.dart';
 
@@ -33,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, AsyncSnapshot<List<MovieModel>> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
-                itemCount: snapshot.data!.length,
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   MovieModel movie = snapshot.data![index];
                   return ListTile(
