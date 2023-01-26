@@ -43,11 +43,11 @@ class MovieModel {
     final result = <String, dynamic>{};
 
     result.addAll({'id': id});
-    result.addAll({'originalLanguage': originalLanguage});
-    result.addAll({'originalTitle': originalTitle});
+    result.addAll({'original_language': originalLanguage});
+    result.addAll({'original_title': originalTitle});
     result.addAll({'overview': overview});
-    result.addAll({'posterPath': posterPath});
-    result.addAll({'releaseDate': releaseDate});
+    result.addAll({'poster_path': posterPath});
+    result.addAll({'releas_date': releaseDate});
     result.addAll({'title': title});
 
     return result;
@@ -56,11 +56,11 @@ class MovieModel {
   factory MovieModel.fromMap(Map<String, dynamic> map) {
     return MovieModel(
       id: map['id']?.toInt() ?? 0,
-      originalLanguage: map['originalLanguage'] ?? '',
-      originalTitle: map['originalTitle'] ?? '',
+      originalLanguage: map['original_language'] ?? '',
+      originalTitle: map['original_title'] ?? '',
       overview: map['overview'] ?? '',
-      posterPath: map['posterPath'] ?? '',
-      releaseDate: map['releaseDate'] ?? '',
+      posterPath: map['poster_path'] ?? '',
+      releaseDate: map['release_date'] ?? '',
       title: map['title'] ?? '',
     );
   }
