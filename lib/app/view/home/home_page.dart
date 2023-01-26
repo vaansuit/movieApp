@@ -158,16 +158,28 @@ class _HomePageState extends State<HomePage> {
           return const CircularProgressIndicator();
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(
-          label: 'Home',
-          icon: Icon(Icons.home),
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        child: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: 'Comprar',
+              icon: Icon(Icons.calendar_month_outlined),
+            ),
+            BottomNavigationBarItem(
+              label: 'Meus ingressos',
+              icon: Icon(Icons.calendar_month_outlined),
+            ),
+          ],
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.yellow,
+          unselectedItemColor: Colors.grey,
         ),
-        BottomNavigationBarItem(
-          label: 'Meus tickets',
-          icon: Icon(Icons.calendar_month_outlined),
-        ),
-      ]),
+      ),
     );
   }
 }
