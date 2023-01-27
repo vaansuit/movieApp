@@ -61,26 +61,29 @@ class _HomePageState extends State<HomePage> {
                         items: snapshot.data!.take(5).map((poster) {
                           return Builder(
                             builder: (BuildContext context) {
-                              return Container(
-                                margin: const EdgeInsets.only(
-                                  top: 20,
-                                  bottom: 20,
-                                ),
-                                width: 220,
-                                height: 250,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular((10)),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.yellow,
-                                      spreadRadius: 2,
-                                      blurRadius: 2,
-                                    )
-                                  ],
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        'https://image.tmdb.org/t/p/w500/${poster.posterPath}'),
-                                    fit: BoxFit.fill,
+                              return TextButton(
+                                onPressed: () {},
+                                child: Container(
+                                  margin: const EdgeInsets.only(
+                                    top: 20,
+                                    bottom: 20,
+                                  ),
+                                  width: 180,
+                                  height: 250,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular((10)),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.yellow,
+                                        spreadRadius: 2,
+                                        blurRadius: 2,
+                                      )
+                                    ],
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                          'https://image.tmdb.org/t/p/w500/${poster.posterPath}'),
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                               );
@@ -108,46 +111,46 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  FutureBuilder(
-                    future: movies,
-                    builder:
-                        (context, AsyncSnapshot<List<MovieModel>> snapshot) {
-                      if (snapshot.hasData) {
-                        return SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              for (int i = 6; i < 11; i++)
-                                Card(
-                                  color: Colors.yellow,
-                                  child: SizedBox(
-                                    width: 100,
-                                    height: 150,
-                                    child: Image.network(
-                                        'https://image.tmdb.org/t/p/w500/${snapshot.data![i].posterPath}'),
-                                  ),
-                                ),
-                            ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        for (int i = 6; i < 11; i++)
+                          TextButton(
+                            onPressed: () {},
+                            child: Card(
+                              child: SizedBox(
+                                width: 100,
+                                height: 150,
+                                child: Image.network(
+                                    'https://image.tmdb.org/t/p/w500/${snapshot.data![i].posterPath}'),
+                              ),
+                            ),
                           ),
-                        );
-                      }
-                      return const CircularProgressIndicator();
-                    },
+                      ],
+                    ),
+                  ),
+                  const Text(
+                    'Siga nos também em nossas redes sociais!',
+                    style: TextStyle(color: Colors.yellow, fontSize: 20),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Text(
-                        'Instagram',
-                        style: TextStyle(color: Colors.yellow),
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Image(
+                            image: AssetImage('img/instagram_icon.png')),
                       ),
-                      Text(
-                        'Instagram',
-                        style: TextStyle(color: Colors.yellow),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Image(
+                            image: AssetImage('img/twitter_icon.png')),
                       ),
-                      Text(
-                        'Twitter',
-                        style: TextStyle(color: Colors.yellow),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Image(
+                            image: AssetImage('img/youtube_icon.png')),
                       ),
                     ],
                   ),
